@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ph.lease.dao.CustomerMapper">
+
+    <!--查询所有用户SQL语句-->
+    <sql id="selectAllCustomers">
+        select id, name, telephone, password, address, create_date
+        from db_lease.tbl_customer
+    </sql>
+
+    <!-- 添加用户 -->
+    <insert id="insert" parameterType="Customer">
+        insert into tbl_customer(name, telephone, password, address, create_date)
+        values (#{name}, #{telephone}, #{password}, #{address}, current_date)
+    </insert>
+
+    <!--根据条件查询查询，如果没有条件，则查询全部-->
+    <select id="select" parameterType="Customer" resultType="Customer">
+        <include refid="selectAllCustomers"/>
+        <where>
+            <if test="id != null">
+                id = #{id}
+            </if>
+            <if test="name != null">
+                and name like #{name}
+            </if>
+            <if test="telephone != null">
+                and telephone like #{telephone}
+            </if>
+            <if test="password != null">
+                and password like #{password}
+            </if>
+            <if test="address != null">
+                and address like #{address}
+            </if>
+            <if test="create_date != null">
+                and create_date = #{create_date}
+            </if>
+        </where>
+    </select>
+
+    <!--查询所有用户-->
+    <select id="selectAll" resultType="Customer">
+        <include refid="selectAllCustomers"/>
+    </select>
+
+    <!--分页查询-->
+    <select id="selectByPage" resultType="Customer">
+        <include refid="selectAllCustomers"/>
+        limit #{offset}, #{row_count}
+    </select>
+
+    <!-- 根据手机号查询记录数 -->
+    <select id="selectByTelephone" parameterType="String" resultType="Customer">
+        <include refid="selectAllCustomers"/>
+        where valid = 't' and telephone = #{telephone}
+    </select>
+
+    <!-- 查询所有用户，按照创建时间降序排序 -->
+    <select id="selectAllCreateDateDesc" resultType="Customer">
+        <include refid="selectAllCustomers"/>
+        order by create_date desc
+    </select>
+
+    <!-- 根据姓名和手机号模糊查询，按照ID降序排序 -->
+    <select id="selectFuzzyByNameAndTelephoneOrderByIDDesc" parameterType="Customer" resultType="Customer">
+        <include refid="selectAllCustomers"/>
+        where valid = 't'
+        <if test="name != null">
+            and name like concat("%", #{name}, "%")
+        </if>
+        <if test="telephone != null">
+            and telephone like concat("%", #{telephone}, "%")
+        </if>
+        order by id desc
+    </select>
+
+    <!-- 根据手机号查询记录数 -->
+    <select id="selectCountByTelephone" parameterType="Customer" resultType="int">
+        select count(*)
+        from tbl_customer
+        where valid = 't'
+          and telephone like #{telephone}
+    </select>
+
+    <!-- 查询所有客户，按照订单数降序排序 -->
+    <select id="selectOrderByOrderCountDesc" resultType="Customer">
+        select tblc2.id, name, telephone
+        from tbl_customer tblc2
+                 left join (select tblc.id, count(*) as count
+                            from tbl_customer tblc,
+                                 tbl_order tblo
+                            where tblc.valid = 't'
+                              and tblo.valid = 't'
+                              and tblc.id = tblo.c_id
+                            group by tblc.id) tblo2
+                           on tblc2.id = tblo2.id
+        order by count desc, create_date desc;
+    </select>
+
+    <!-- 根据手机号和密码查询客户，用于登录验证 -->
+    <select id="selectByTelephoneAndPassword" parameterType="Customer" resultType="Customer">
+        <include refid="selectAllCustomers"/>
+        where telephone like #{telephone} and password like #{password}
+    </select>
+
+    <!-- 更新客户信息 -->
+    <update id="update" parameterType="Customer">
+        update tbl_customer
+        set name      = #{name},
+            telephone = #{telephone},
+            password  = #{password},
+            address   = #{address}
+        where id = #{id}
+    </update>
+
+    <!-- 删除客户，软删除 -->
+    <delete id="delete" parameterType="Customer">
+        update tbl_customer
+        set valid = 'f'
+        where id = #{id}
+    </delete>
+
+</mapper>

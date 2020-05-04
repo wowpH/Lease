@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ph.lease.dao.AdminMapper">
+    <!--查询-->
+    <select id="select" parameterType="Admin" resultType="Admin">
+        select id, username, password
+        from db_lease.tbl_admin
+        where username = #{username}
+          and password = #{password}
+    </select>
+
+    <!-- 修改密码 -->
+    <update id="updatePassword" parameterType="Admin">
+        update tbl_admin
+        set password = #{password}
+        where id = #{id}
+    </update>
+</mapper>

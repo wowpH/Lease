@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ph.lease.dao.OrderDetailMapper">
+
+    <resultMap id="OrderDetailResultMap" type="OrderDetail">
+        <!-- property属性是对应实体类的属性名，column是数据库对应表中的列名 -->
+        <id property="id" column="id"/>
+        <result property="oid" column="o_id"/>
+        <result property="mid" column="m_id"/>
+        <result property="amount" column="amount"/>
+        <result property="creationDate" column="creation_date"/>
+        <result property="valid" column="valid"/>
+    </resultMap>
+
+    <!-- 插入订单明细 -->
+    <insert id="insert" parameterType="OrderDetail">
+        insert into tbl_order_detail(id, o_id, m_id, amount, creation_date)
+        values (#{id}, #{oid}, #{mid}, #{amount}, #{creationDate})
+    </insert>
+
+    <!-- 根据订单编号查询订单明细 -->
+    <select id="selectByOrderID" parameterType="OrderDetail" resultMap="OrderDetailResultMap">
+        select id, o_id, m_id, amount, creation_date, valid
+        from tbl_order_detail
+        where valid = 't'
+          and o_id like #{oid}
+    </select>
+
+    <!-- 查询最近的订单明细ID -->
+    <select id="selectLatestOrderID" resultType="String">
+        select id
+        from tbl_order_detail
+        order by id desc
+        limit 1
+    </select>
+
+    <!-- 根据订单ID，删除订单明细，物理删除 -->
+    <delete id="deleteByOrderID" parameterType="OrderDetail">
+        delete
+        from tbl_order_detail
+        where o_id = #{oid}
+    </delete>
+
+    <!-- 根据订单ID逻辑删除订单明细 -->
+    <delete id="deleteLogicallyByOrderID">
+        update tbl_order_detail
+        set valid = 'f'
+        where o_id = #{oid}
+    </delete>
+
+</mapper>

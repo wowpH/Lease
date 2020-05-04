@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ph.lease.dao.MaterialMapper">
+
+    <sql id="selectAllMaterials">
+        select id,
+               name,
+               model,
+               specification,
+               unit,
+               price,
+               stocks,
+               total,
+               description,
+               cost
+        from db_lease.tbl_material
+    </sql>
+
+    <insert id="insert" parameterType="Material">
+        insert into db_lease.tbl_material(name, model, specification, unit, price, stocks, total, description, cost)
+        values (#{name}, #{model}, #{specification}, #{unit}, #{price}, #{stocks}, #{total}, #{description}, #{cost})
+    </insert>
+
+    <select id="selectByPrimaryKey" parameterType="Material" resultType="Material">
+        <include refid="selectAllMaterials"/>
+        where id = #{id}
+    </select>
+
+    <!-- 根据名称模糊查询，按照库存量降序排序，只查询有效的记录 -->
+    <select id="selectFuzzyOrderByStocksDesc" parameterType="Material" resultType="Material">
+        <include refid="selectAllMaterials"/>
+        where valid = 't'
+        <if test="name != null">
+            and name like concat("%", #{name}, "%")
+        </if>
+        <if test="model != null">
+            and model like concat("%", #{model}, "%")
+        </if>
+        order by stocks desc
+    </select>
+
+    <!-- 根据名称、型号、规格查询 记录数 -->
+    <select id="selectByNameModelSpecification" parameterType="Material" resultType="int">
+        select count(*)
+        from db_lease.tbl_material
+        where valid = 't'
+        and name like #{name}
+        and model like #{model}
+        and specification = #{specification}
+        <if test="id != null">
+            and id != #{id}
+        </if>
+    </select>
+
+    <!-- 查询还有库存的材料按照库存量降序排序 -->
+    <select id="selectOrderByStocksDesc" resultType="Material">
+        select id,
+               name,
+               model,
+               specification,
+               unit,
+               price,
+               stocks,
+               total,
+               description,
+               cost,
+               valid
+        from tbl_material
+        where valid = 't'
+          and stocks > 0
+        order by stocks desc
+    </select>
+
+    <!-- 根据主键更新材料信息 -->
+    <update id="updateByPrimaryKey" parameterType="Material">
+        update tbl_material
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="model != null">
+                model = #{model},
+            </if>
+            <if test="specification != null">
+                specification = #{specification},
+            </if>
+            <if test="unit != null">
+                unit = #{unit},
+            </if>
+            <if test="price != null">
+                price = #{price},
+            </if>
+            <if test="stocks != null">
+                stocks = #{stocks},
+            </if>
+            <if test="total != null">
+                total = #{total},
+            </if>
+            <if test="description != null">
+                description = #{description},
+            </if>
+            <if test="cost != null">
+                cost = #{cost}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!-- 根据订单明细减少库存量，返回操作成功的记录数 -->
+    <update id="reduceStocksByPrimaryKey" parameterType="OrderDetail">
+        update tbl_material
+        set stocks = stocks - #{amount}
+        where id = #{mid}
+          and valid = 't'
+          and stocks >= #{amount}
+    </update>
+
+    <!-- 根据订单明细增加库存量，返回操作成功的记录数 -->
+    <update id="increaseStocksByPrimaryKey" parameterType="OrderDetail">
+        update tbl_material
+        set stocks = stocks + #{amount}
+        where id = #{mid}
+          and valid = 't'
+    </update>
+
+    <delete id="deleteByPrimaryKey" parameterType="int">
+        update tbl_material
+        set valid = 'f'
+        where id = #{id}
+    </delete>
+
+</mapper>
