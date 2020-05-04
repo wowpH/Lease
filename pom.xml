@@ -159,10 +159,12 @@
             <version>1.0.19</version>
         </dependency>
 
+        <!-- 提供了一种简单而灵活的方法，可以将对多部分文件上传功能的支持添加到Servlet和Web应用程序。 -->
+        <!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
-            <version>1.3.1</version>
+            <version>1.4</version>
         </dependency>
 
         <dependency>
