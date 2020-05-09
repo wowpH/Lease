@@ -16,7 +16,7 @@
     <!-- 加载外部属性配置文件 -->
     <bean id="propertyPlaceholderConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="locations" value="classpath:config/jdbc.properties"/>
+        <property name="locations" value="classpath:jdbc.properties"/>
     </bean>
 
     <!-- 配置C3P0数据源 -->

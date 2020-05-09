@@ -17,7 +17,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <c3p0.version>0.9.5.5</c3p0.version>
         <log4j.version>1.2.17</log4j.version>
+        <lombok.version>1.18.12</lombok.version>
     </properties>
 
     <dependencies>
@@ -71,12 +73,12 @@
             <version>4.0.0.RELEASE</version>
         </dependency>
 
-        <!-- JDBC连接池/语句缓存库 -->
+        <!-- C3P0：JDBC连接池/语句缓存库 -->
         <!-- https://mvnrepository.com/artifact/com.mchange/c3p0 -->
         <dependency>
             <groupId>com.mchange</groupId>
             <artifactId>c3p0</artifactId>
-            <version>0.9.5.5</version>
+            <version>${c3p0.version}</version>
         </dependency>
 
         <dependency>
@@ -209,11 +211,11 @@
             <scope>test</scope>
         </dependency>
 
-        <!--lombok插件，不用写getter，setter，constructor方法，减少代码量-->
+        <!-- 让您的java更有趣：自动资源管理、自动生成getter、setter、equals、hashCode和toString，等等! -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.12</version>
+            <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
 
