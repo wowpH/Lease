@@ -10,8 +10,10 @@
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath*:spring/applicationContext.xml</param-value>
+        <!-- 指定Spring配置文件的位置 -->
+        <param-value>classpath:applicationContext.xml</param-value>
     </context-param>
+
     <!-- 监听器: 创建spring框架的IOC容器
                  将IOC容器对象存放到application域中
                  ApplicationContext ioc = WebApplicationContextUtils.getWebApplicationContext(application)
