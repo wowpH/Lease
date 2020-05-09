@@ -9,18 +9,7 @@
       </configuration>
     </facet>
     <facet type="Spring" name="Spring">
-      <configuration>
-        <fileset id="web application context" name="MVC application context" removed="true">
-          <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext.xml</file>
-        </fileset>
-        <fileset id="web springmvc servlet context" name="MVC springmvc servlet context" removed="true">
-          <file>file://$MODULE_DIR$/src/main/resources/spring/springmvc-context.xml</file>
-        </fileset>
-        <fileset id="fileset" name="Spring Application Context" removed="false">
-          <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/spring/springmvc-context.xml</file>
-        </fileset>
-      </configuration>
+      <configuration />
     </facet>
     <facet type="web" name="Web">
       <configuration>
