@@ -1,29 +1,21 @@
 <!DOCTYPE web-app PUBLIC
         "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
         "http://java.sun.com/dtd/web-app_2_3.dtd" >
-
+<!-- web.xml 2020-5-10 17:29:03 -->
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://java.sun.com/xml/ns/javaee"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          version="2.5">
     <display-name>Archetype Created Web Application</display-name>
 
+    <!-- Spring -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <!-- 指定Spring配置文件的位置 -->
         <param-value>classpath:applicationContext.xml</param-value>
     </context-param>
 
-    <!-- 监听器: 创建spring框架的IOC容器
-                 将IOC容器对象存放到application域中
-                 ApplicationContext ioc = WebApplicationContextUtils.getWebApplicationContext(application)
-
-                 ContextLoaderListener extends ContextLoader implements ServletContextListener
-                 ServletContextListener监听器接口:
-                    监听ServletContext创建和销毁
-                        如果监听到ServletContext创建(服务器启动) ，就会创建IOC容器。
-                        如果监听到ServletContext销毁(服务器停止或卸载项目) ，就会销毁IOC容器。
-     -->
+    <!-- 监听器 -->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
@@ -35,7 +27,7 @@
 
     <!-- 字符编码过滤器 -->
     <filter>
-        <filter-name>encoding</filter-name>
+        <filter-name>characterEncodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
         <init-param>
             <param-name>encoding</param-name>
@@ -45,15 +37,15 @@
             <param-name>forceEncoding</param-name>
             <param-value>true</param-value>
         </init-param>
+        <init-param>
+            <param-name>forceResponseEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
     </filter>
     <filter-mapping>
-        <filter-name>encoding</filter-name>
+        <filter-name>characterEncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
-        <!--
-          <dispatcher>REQUEST</dispatcher>
-        -->
     </filter-mapping>
-
 
     <!--支持RESTful风格，将POST请求转换为PUT或DELETE请求
         会读取隐含参数  "_method "
@@ -67,7 +59,7 @@
         <servlet-name>springmvc</servlet-name>
     </filter-mapping>
 
-    <!--前端控制器-->
+    <!-- 前端控制器 -->
     <servlet>
         <servlet-name>springmvc</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
