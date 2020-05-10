@@ -20,9 +20,9 @@
 
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
-        <property name="prefix" value="/WEB-INF/jsp/"></property>
-        <property name="suffix" value=".jsp"></property>
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
     </bean>
 
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
@@ -33,7 +33,7 @@
 
     <!--自定义登录拦截器-->
     <mvc:interceptors>
-        <bean id="loginInterceptor" class="com.ph.lease.interceptor.LoginInterceptor"></bean>
+        <bean id="loginInterceptor" class="com.ph.lease.interceptor.LoginInterceptor"/>
     </mvc:interceptors>
 
     <!--转换器：String转Date-->
@@ -41,7 +41,7 @@
           class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
         <property name="converters">
             <list>
-                <bean class="com.ph.lease.converter.DateConverter"></bean>
+                <bean class="com.ph.lease.converter.DateConverter"/>
             </list>
         </property>
     </bean>

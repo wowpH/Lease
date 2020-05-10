@@ -18,9 +18,13 @@
         <fileset id="web springmvc servlet context" name="MVC springmvc servlet context" removed="true">
           <file>file://$MODULE_DIR$/src/main/resources/spring/springmvc-context.xml</file>
         </fileset>
+        <fileset id="web dispatcherServlet servlet context" name="MVC dispatcherServlet servlet context" removed="true">
+          <dependency>web application context</dependency>
+          <file>file://$MODULE_DIR$/src/main/resources/spring-mvc.xml</file>
+        </fileset>
         <fileset id="fileset" name="Spring Application Context" removed="false">
           <file>file://$MODULE_DIR$/src/main/resources/applicationContext.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/spring/springmvc-context.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/spring-mvc.xml</file>
         </fileset>
       </configuration>
     </facet>

@@ -56,22 +56,21 @@
     </filter>
     <filter-mapping>
         <filter-name>HiddenHttpMethodFilter</filter-name>
-        <servlet-name>springmvc</servlet-name>
+        <servlet-name>dispatcherServlet</servlet-name>
     </filter-mapping>
 
     <!-- 前端控制器 -->
     <servlet>
-        <servlet-name>springmvc</servlet-name>
+        <servlet-name>dispatcherServlet</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:spring/springmvc-context.xml</param-value>
+            <param-value>classpath:spring-mvc.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>springmvc</servlet-name>
-
+        <servlet-name>dispatcherServlet</servlet-name>
         <!--扩展匹配  访问静态资源时可以滤过DispatcherServlet-->
         <url-pattern>*.htm</url-pattern>
         <url-pattern>*.do</url-pattern>
