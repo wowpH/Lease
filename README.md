@@ -50,7 +50,7 @@ IDE：Intellij IDEA 2019.3.3
 
 ### 管理员材料管理
 
-![管理员材料管理](项目展示/图片/admin-material.png)
+![管理员材料管理](https://img-blog.csdnimg.cn/fde0c58d013f4281a116f6706e4f296f.png)
 
 ### 管理员客户管理
 
