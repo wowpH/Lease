@@ -36,17 +36,17 @@ IDE：Intellij IDEA 2019.3.3
 
 ### 登录页面
 
-![登录页面](项目展示/图片/login.png)
+![登录页面](https://img-blog.csdnimg.cn/fab3cde2068b4ad4a91493d704efd36e.png)
 
 ## 管理员模块
 
 ### 管理员首页
 
-![管理员主页](项目展示/图片/admin-index.png)
+![管理员主页](https://img-blog.csdnimg.cn/e0d689a6c8ba422aabd812cb7f349943.png)
 
 ### 管理员订单管理
 
-![管理员订单管理](项目展示/图片/admin-order.png)
+![管理员订单管理](https://img-blog.csdnimg.cn/ff5b16c774df4d059c33d941bc75db65.png)
 
 ### 管理员材料管理
 
@@ -54,18 +54,18 @@ IDE：Intellij IDEA 2019.3.3
 
 ### 管理员客户管理
 
-![管理员客户管理](项目展示/图片/admin-customer.png)
+![管理员客户管理](https://img-blog.csdnimg.cn/6c375fed83464064a1bcac5122987f23.png#pic_center)
 
 ### 管理员密码管理
 
-![管理员密码管理](项目展示/图片/admin-password.png)
+![管理员密码管理](https://img-blog.csdnimg.cn/50effb11dc0e438bb91e8029fe6ab941.png)
 
 ## 客户模块
 
 ### 客户订单信息
 
-![客户订单信息](项目展示/图片/customer-order.png)
+![客户订单信息](https://img-blog.csdnimg.cn/d0de242efbe04b0fa57974897c2df8ef.png)
 
 # 讨论群
 
-![讨论群](项目展示/图片/Java算法刷题群聊二维码.png)
+![讨论群](https://img-blog.csdnimg.cn/c5cda151b6504712a3840044f157e2a3.png)
