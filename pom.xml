@@ -70,7 +70,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>4.0.0.RELEASE</version>
+            <version>5.2.20.RELEASE</version>
         </dependency>
 
         <!-- C3P0：JDBC连接池/语句缓存库 -->
