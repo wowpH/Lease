@@ -1,33 +1,15 @@
-# 目录
-
-[项目基本信息](#项目基本信息)
-
-[开发运行环境](#开发运行环境)
-
-[项目展示](#项目展示)
-
-[讨论群](#讨论群)
-
----
-
 # 项目基本信息
 
-项目：基于Java的钢管租赁系统
-
-作者：wowpH
-
+项目：基于Java的钢管租赁系统  
+作者：wowpH  
 日期：2020年4月28日09:00:14
 
 # 开发运行环境
 
-JDK：1.8.0_144
-
-IDE：Intellij IDEA 2019.3.3
-
-数据库：MySQL Community Server 8.0.15
-
-服务器：Tomcat 7
-
+JDK：1.8.0_144  
+IDE：Intellij IDEA 2019.3.3  
+数据库：MySQL Community Server 8.0.15  
+服务器：Tomcat 7  
 浏览器：Google Chrome 81
 
 # 项目展示
@@ -68,4 +50,6 @@ IDE：Intellij IDEA 2019.3.3
 
 # 讨论群
 
-![讨论群](https://img-blog.csdnimg.cn/c5cda151b6504712a3840044f157e2a3.png)
+![讨论群](./项目展示/图片/Java算法刷题群聊二维码.png)  
+群名称：Java算法刷题  
+群号：793467972
