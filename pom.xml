@@ -211,14 +211,6 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- 让您的java更有趣：自动资源管理、自动生成getter、setter、equals、hashCode和toString，等等! -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-            <scope>provided</scope>
-        </dependency>
-
     </dependencies>
 
     <build>
