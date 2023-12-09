@@ -1,3 +1,14 @@
+### 2022-09-05 09:43:15
+
+不想用lombok插件了，删掉了lombok依赖，启动后登录报错。原因是缺少无参构造方法。
+
+```java
+class com.ph.lease.entity.Admin with invalid types()or values().Cause:java.lang.NoSuchMethodException:com.ph.lease.entity.Admin.<init>()]with root cause
+        java.lang.NoSuchMethodException:com.ph.lease.entity.Admin.<init>()
+        at java.lang.Class.getConstructor0(Class.java:3082)
+        at java.lang.Class.getDeclaredConstructor(Class.java:2178)
+```
+
 ### 2020-4-26 19:50:51
 
 t表示有效，f表示无效，，，映射文件不要写错了啊。。。半天没找出错误
@@ -53,11 +64,12 @@ ajax如果一直是error而不是success，可能是Controller没有添加@Repon
 ### 2020-4-17 12:38:53
 
 插入重复字段的时候报错
+
 ```text
 java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '13016405502' for key 'tbl_customer_telephone_uindex'
 ```
 
-在xml映射文件中的insert into中间添加ignore变为：insert ignore into 
+在xml映射文件中的insert into中间添加ignore变为：insert ignore into
 
 ### 2020-4-15 10:10:37
 
@@ -66,7 +78,6 @@ java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '13016405502'
 ```
 
 改了请求之后，别忘了Ctrl+F5刷新浏览器缓存
-
 
 ### 2020-4-12 18:49:01
 
@@ -89,13 +100,16 @@ org.apache.ibatis.reflection.ReflectionException: There is no getter for propert
 ```
 
 找不到静态资源，在mvc配置文件添加
+
 ```xml
-    <mvc:default-servlet-handler/>
+
+<mvc:default-servlet-handler/>
 ```
 
 ### 2020-4-9 20:28:59
 
 xml文件上方出现
+
 ```text
 MVC application context in module lease.file is included in 4 contexts.
 ```
@@ -111,12 +125,16 @@ File > Project Structure > Modules > Spring 点击减号，全部删完后点击
 ### 2020-4-9 09:00:46
 
 启动项目时，控制台出现：
+
 ```text
 [WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 ```
+
 在pom.xml文件中添加如下代码：
+
 ```xml
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+
+<properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+</properties>
 ```

@@ -2,9 +2,6 @@ package com.ph.lease.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ph.lease.util.DateUtil;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.Date;
 import java.util.List;
@@ -12,11 +9,7 @@ import java.util.List;
 /**
  * @author PengHao
  */
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class Order {
-
     private String id;
     private Integer cid;
     private String type;
@@ -26,10 +19,68 @@ public class Order {
     // @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date creationDate;
     private char valid;
-
     private Customer customer;
     private List<OrderDetail> orderDetails;
-
+    
+    public Order() {
+    }
+    
+    public String getId() {
+        return id;
+    }
+    
+    public void setId(String id) {
+        this.id = id;
+    }
+    
+    public Integer getCid() {
+        return cid;
+    }
+    
+    public void setCid(Integer cid) {
+        this.cid = cid;
+    }
+    
+    public String getType() {
+        return type;
+    }
+    
+    public void setType(String type) {
+        this.type = type;
+    }
+    
+    public Date getCreationDate() {
+        return creationDate;
+    }
+    
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+    
+    public char getValid() {
+        return valid;
+    }
+    
+    public void setValid(char valid) {
+        this.valid = valid;
+    }
+    
+    public Customer getCustomer() {
+        return customer;
+    }
+    
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+    
+    public List<OrderDetail> getOrderDetails() {
+        return orderDetails;
+    }
+    
+    public void setOrderDetails(List<OrderDetail> orderDetails) {
+        this.orderDetails = orderDetails;
+    }
+    
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
@@ -60,5 +111,4 @@ public class Order {
         result.append('}');
         return result.toString();
     }
-
 }

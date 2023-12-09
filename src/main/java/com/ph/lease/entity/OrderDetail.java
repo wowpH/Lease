@@ -1,34 +1,93 @@
 package com.ph.lease.entity;
 
 import com.ph.lease.util.DateUtil;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 /**
  * @author PengHao
  */
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class OrderDetail {
-
     private String id;
     private String oid;
     private Integer mid;
     private Integer amount;
     private Date creationDate;
     private char valid;
-
     private Order order;
     private Material material;
-
+    
+    public OrderDetail() {
+    }
+    
     public OrderDetail(String oid) {
         this.oid = oid;
     }
-
+    
+    public String getId() {
+        return id;
+    }
+    
+    public void setId(String id) {
+        this.id = id;
+    }
+    
+    public String getOid() {
+        return oid;
+    }
+    
+    public void setOid(String oid) {
+        this.oid = oid;
+    }
+    
+    public Integer getMid() {
+        return mid;
+    }
+    
+    public void setMid(Integer mid) {
+        this.mid = mid;
+    }
+    
+    public Integer getAmount() {
+        return amount;
+    }
+    
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+    
+    public Date getCreationDate() {
+        return creationDate;
+    }
+    
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+    
+    public char getValid() {
+        return valid;
+    }
+    
+    public void setValid(char valid) {
+        this.valid = valid;
+    }
+    
+    public Order getOrder() {
+        return order;
+    }
+    
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+    
+    public Material getMaterial() {
+        return material;
+    }
+    
+    public void setMaterial(Material material) {
+        this.material = material;
+    }
+    
     @Override
     public String toString() {
         // Log.log("OrderDetail.toString()");
@@ -54,5 +113,4 @@ public class OrderDetail {
         // Log.log(result.toString());
         return result.toString();
     }
-
 }

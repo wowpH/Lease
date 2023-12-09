@@ -13,12 +13,11 @@ public interface AdminMapper {
      * @return
      */
     Admin select(Admin admin);
-
+    
     /**
      * 修改密码
      *
      * @param admin
      */
     int updatePassword(Admin admin);
-
 }
