@@ -12,6 +12,18 @@ IDE：Intellij IDEA 2019.3.3
 服务器：Tomcat 7  
 浏览器：Google Chrome 81
 
+# 启动步骤
+
+1. 将项目克隆到本地
+2. idea打开项目
+   ![项目](./images/start/project.png)
+3. 打开maven面板
+   ![maven](./images/start/maven.png)
+4. 双击tomcat7:run
+   ![启动](./images/start/run.png)
+5. 浏览器访问：http://localhost:8080/
+   ![访问](./images/start/visit.png)
+
 # 项目展示
 
 ## 公共模块
