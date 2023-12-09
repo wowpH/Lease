@@ -21,7 +21,7 @@ IDE：Intellij IDEA 2019.3.3
    ![maven](./images/start/maven.png)
 4. 双击tomcat7:run
    ![启动](./images/start/run.png)
-5. 浏览器访问：[http://localhost:8080/](http://localhost:8080/)
+5. 浏览器访问：<a href="http://localhost:8080" target="_blank" rel="noopener noreferrer">http://localhost:8080</a>
    ![访问](./images/start/visit.png)
 
 # 项目展示
